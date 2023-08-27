@@ -27,4 +27,20 @@ public class UserService {
 		user.setRole("ROLE_USER");
 		return this.userrepo.save(user);
 	}
+	
+	public User getUserDetails(String name) {
+		return this.userrepo.getUserByUserName(name);
+	}
+
+	public boolean deleteUser(String name, String password) {
+		
+		User user = getUserDetails(name);
+		
+		if(passswordEncoder.matches(password, user.getPassword())==false)
+			return false;
+		
+		this.userrepo.delete(user);
+		
+		return true;
+	}
 }

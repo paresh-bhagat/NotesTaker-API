@@ -1,4 +1,4 @@
-package com.restapi.service;
+package com.restapi.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
 import com.restapi.security.JwtAuthenticationEntryPoint;
 import com.restapi.security.JwtAuthenticationFilter;
 
@@ -35,7 +34,7 @@ public class SecurityConfig {
 
         http.csrf(csrf -> csrf.disable())
         		.cors(cors -> cors.disable())
-                .authorizeHttpRequests(auth -> auth.requestMatchers( new AntPathRequestMatcher("/notesapi/user/**")).hasRole("USER")
+                .authorizeHttpRequests(auth -> auth.requestMatchers( new AntPathRequestMatcher("/notesapi/user/**")).authenticated()
                 		.requestMatchers(new AntPathRequestMatcher("/notesapi/login")).permitAll()
                 		.requestMatchers(new AntPathRequestMatcher("/notesapi/signup")).permitAll()
                 		.anyRequest().authenticated())
