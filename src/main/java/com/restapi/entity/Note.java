@@ -1,7 +1,6 @@
 package com.restapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -10,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,9 +31,11 @@ public class Note {
 	private int id;
 	
 	@Column(length=70,name="note_title")
+	@Size(min=1,max=70,message="Title between 1 to 70 characters")
 	private String title;
 	
 	@Column(length=7500,name="note_content")
+	@Size(min=1,max=7500,message="Content between 1 to 7500 characters")
 	private String content;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

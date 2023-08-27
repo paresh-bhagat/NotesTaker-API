@@ -12,6 +12,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,7 @@ public class User implements UserDetails {
 
 	@Id
 	@Column(length=20,name="user_name")
+	@Size(min=1,max=20,message="Username between 1 to 20 characters")
 	private String username;
 	
 	@Column(length=100,name="user_password")
