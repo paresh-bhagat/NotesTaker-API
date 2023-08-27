@@ -1,5 +1,7 @@
 package com.restapi.service;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.restapi.entity.Note;
@@ -24,6 +26,8 @@ public class NoteService {
 		
 		User user = this.userrepo.getUserByUserName(name);
 		note.setUser(user);
+		Date date = new Date();
+		note.setDate(date);
 		return this.noteRepository.save(note);
 	}
 	
@@ -48,6 +52,8 @@ public class NoteService {
 		
 		temp.setTitle(note.getTitle());
 		temp.setContent(note.getContent());
+		Date date = new Date();
+		temp.setDate(date);
 		
 		return this.noteRepository.save(temp);
 	}

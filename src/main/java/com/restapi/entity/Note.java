@@ -1,5 +1,6 @@
 package com.restapi.entity;
 
+import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,6 +40,10 @@ public class Note {
 	@Column(length=7500,name="note_content")
 	@Size(min=1,max=7500,message="Content between 1 to 7500 characters")
 	private String content;
+	
+	@Column(name="note_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date date;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonBackReference
