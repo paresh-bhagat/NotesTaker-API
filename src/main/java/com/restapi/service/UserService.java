@@ -22,6 +22,10 @@ public class UserService {
 		return this.userrepo.findAll();
 	}
 	
+	public Boolean checkUsername(String username) {
+		return userrepo.existsById(username);
+	}
+	
 	public User signup(User user) {
 		user.setPassword(this.passswordEncoder.encode(user.getPassword()));
 		user.setRole("ROLE_USER");

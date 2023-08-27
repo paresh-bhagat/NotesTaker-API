@@ -22,11 +22,15 @@ public class UserController {
 	
 	// signup handler
 	@PostMapping("/signup")
-	public ResponseEntity<User> signup(@RequestBody User newuser) {
+	public ResponseEntity<String> signup(@RequestBody User newuser) {
 		
 		User user = new User();
 		
 		try {
+			
+			if(this.userservice.checkUsername(newuser.getUsername()))
+				return new ResponseEntity<>("Username already exists", HttpStatus.NOT_IMPLEMENTED);
+			
 			user = this.userservice.signup(newuser);
 		}
 		catch(Exception e) {
@@ -39,7 +43,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
         }
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(user);
+		return new ResponseEntity<>("Signup Successfull for "+ user.getUsername(), HttpStatus.CREATED);
 	}
 	
 	// get user handler
