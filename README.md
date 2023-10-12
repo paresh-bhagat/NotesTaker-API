@@ -1,6 +1,6 @@
 # NotesTaker
 
-REST API for users to save notes. It supports CRUD operations for notes. User can signup then login to generate a web token for using this API.
+REST API for users to save notes. It supports CRUD operations for notes. User can signup then login to generate a web token for using this API. It is based on monolithic architecture.
 
 ## Tech Used
 
