@@ -10,7 +10,7 @@ REST API for users to save notes. It supports CRUD operations for notes. User ca
 The Spring Framework is an application framework and inversion of control container for the Java platform.
 
 #### Spring Boot
-Spring Boot Tutorial provides basic and advanced concepts of Spring Framework. Our Spring Boot Tutorial is designed for beginners and professionals both. It also comes with Tomcat embedded.
+Spring Boot Tutorial provides basic and advanced concepts of Spring Framework. It also comes with Tomcat embedded.
 
 ### Database
 
